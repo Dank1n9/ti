@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>初二语文 · 古诗文名句默写（试卷版）</title>
+    <title>初二语文 · 古诗文名句默写</title>
     <style>
         * {
             box-sizing: border-box;
@@ -335,7 +335,7 @@
 <div class="paper">
     <div class="header">
         <h1>2026 年 南 京 市 初 二 语 文</h1>
-        <div style="font-size:22px; font-weight:700; letter-spacing: 6px; margin-top: -2px;">古诗文名句默写</div>
+        <div style="font-size:22px; font-weight:700; letter-spacing: 6px; margin-top: -2px;">古诗文名句默写（八年级下册）</div>
         <div class="sub">
             <span>姓名：<input type="text" class="name-input" placeholder="请填写"></span>
             <span>班级：<input type="text" class="class-input" placeholder="请填写"></span>
@@ -365,155 +365,161 @@
 
 <script>
     (function() {
-        // ===== 100道古诗文默写题（依据统编版八年级上下册，不超纲）=====
+        // ===== 100道古诗文默写题（统编版八年级下册）=====
         const questions = [
-            // ---- 八年级上册 ----
-            // 《野望》王绩
-            { template: '树树皆秋色，###。', answer: '山山唯落晖', hint: '王绩《野望》' },
-            { template: '###，长歌怀采薇。', answer: '相顾无相识', hint: '王绩《野望》' },
-            // 《黄鹤楼》崔颢
-            { template: '###，芳草萋萋鹦鹉洲。', answer: '晴川历历汉阳树', hint: '崔颢《黄鹤楼》' },
-            { template: '日暮乡关何处是？###。', answer: '烟波江上使人愁', hint: '崔颢《黄鹤楼》' },
-            // 《使至塞上》王维
-            { template: '###，归雁入胡天。', answer: '征蓬出汉塞', hint: '王维《使至塞上》' },
-            { template: '大漠孤烟直，###。', answer: '长河落日圆', hint: '王维《使至塞上》' },
-            // 《渡荆门送别》李白
-            { template: '###，江入大荒流。', answer: '山随平野尽', hint: '李白《渡荆门送别》' },
-            { template: '月下飞天镜，###。', answer: '云生结海楼', hint: '李白《渡荆门送别》' },
-            { template: '###，万里送行舟。', answer: '仍怜故乡水', hint: '李白《渡荆门送别》' },
-            // 《钱塘湖春行》白居易
-            { template: '几处早莺争暖树，###。', answer: '谁家新燕啄春泥', hint: '白居易《钱塘湖春行》' },
-            { template: '###，浅草才能没马蹄。', answer: '乱花渐欲迷人眼', hint: '白居易《钱塘湖春行》' },
-            { template: '最爱湖东行不足，###。', answer: '绿杨阴里白沙堤', hint: '白居易《钱塘湖春行》' },
-            // 《庭中有奇树》古诗十九首
-            { template: '###，绿叶发华滋。', answer: '庭中有奇树', hint: '《古诗十九首》' },
-            { template: '攀条折其荣，###。', answer: '将以遗所思', hint: '《古诗十九首》' },
-            // 《龟虽寿》曹操
-            { template: '###，志在千里。', answer: '老骥伏枥', hint: '曹操《龟虽寿》' },
-            { template: '烈士暮年，###。', answer: '壮心不已', hint: '曹操《龟虽寿》' },
-            // 《赠从弟》刘桢
-            { template: '###，终岁常端正。', answer: '冰霜正惨凄', hint: '刘桢《赠从弟》' },
-            { template: '岂不罹凝寒？###。', answer: '松柏有本性', hint: '刘桢《赠从弟》' },
-            // 《梁甫行》曹植
-            { template: '###，狐兔翔我宇。', answer: '柴门何萧条', hint: '曹植《梁甫行》' },
-            // 《饮酒（其五）》陶渊明
-            { template: '采菊东篱下，###。', answer: '悠然见南山', hint: '陶渊明《饮酒》' },
-            { template: '###，飞鸟相与还。', answer: '山气日夕佳', hint: '陶渊明《饮酒》' },
-            { template: '此中有真意，###。', answer: '欲辨已忘言', hint: '陶渊明《饮酒》' },
-            // 《春望》杜甫
-            { template: '###，恨别鸟惊心。', answer: '感时花溅泪', hint: '杜甫《春望》' },
-            { template: '烽火连三月，###。', answer: '家书抵万金', hint: '杜甫《春望》' },
-            { template: '白头搔更短，###。', answer: '浑欲不胜簪', hint: '杜甫《春望》' },
-            // 《雁门太守行》李贺
-            { template: '黑云压城城欲摧，###。', answer: '甲光向日金鳞开', hint: '李贺《雁门太守行》' },
-            { template: '###，霜重鼓寒声不起。', answer: '半卷红旗临易水', hint: '李贺《雁门太守行》' },
-            { template: '报君黄金台上意，###。', answer: '提携玉龙为君死', hint: '李贺《雁门太守行》' },
-            // 《赤壁》杜牧
-            { template: '###，铜雀春深锁二乔。', answer: '东风不与周郎便', hint: '杜牧《赤壁》' },
-            // 《渔家傲》李清照
-            { template: '###，星河欲转千帆舞。', answer: '天接云涛连晓雾', hint: '李清照《渔家傲》' },
-            { template: '仿佛梦魂归帝所，闻天语，###。', answer: '殷勤问我归何处', hint: '李清照《渔家傲》' },
-            { template: '###，风休住，蓬舟吹取三山去！', answer: '九万里风鹏正举', hint: '李清照《渔家傲》' },
-            // 《浣溪沙》晏殊
-            { template: '###，似曾相识燕归来。', answer: '无可奈何花落去', hint: '晏殊《浣溪沙》' },
-            // 《采桑子》欧阳修
-            { template: '###，隐隐笙歌处处随。', answer: '芳草长堤', hint: '欧阳修《采桑子》' },
-            { template: '微动涟漪，###。', answer: '惊起沙禽掠岸飞', hint: '欧阳修《采桑子》' },
-            // 《相见欢》朱敦儒
-            { template: '###，万里夕阳垂地大江流。', answer: '金陵城上西楼', hint: '朱敦儒《相见欢》' },
-            // 《如梦令》李清照
-            { template: '常记溪亭日暮，###。', answer: '沉醉不知归路', hint: '李清照《如梦令》' },
-            { template: '争渡，争渡，###。', answer: '惊起一滩鸥鹭', hint: '李清照《如梦令》' },
-            // ---- 八年级上册 文言文 ----
-            // 《三峡》郦道元
-            { template: '自非亭午夜分，###。', answer: '不见曦月', hint: '郦道元《三峡》' },
-            { template: '至于夏水襄陵，###。', answer: '沿溯阻绝', hint: '郦道元《三峡》' },
-            { template: '###，良多趣味。', answer: '清荣峻茂', hint: '郦道元《三峡》' },
-            // 《答谢中书书》陶弘景
-            { template: '###，猿鸟乱鸣。', answer: '晓雾将歇', hint: '陶弘景《答谢中书书》' },
-            { template: '夕日欲颓，###。', answer: '沉鳞竞跃', hint: '陶弘景《答谢中书书》' },
-            // 《记承天寺夜游》苏轼
-            { template: '庭下如积水空明，###，盖竹柏影也。', answer: '水中藻、荇交横', hint: '苏轼《记承天寺夜游》' },
-            // 《与朱元思书》吴均
-            { template: '###，望峰息心。', answer: '鸢飞戾天者', hint: '吴均《与朱元思书》' },
-            { template: '经纶世务者，###。', answer: '窥谷忘反', hint: '吴均《与朱元思书》' },
-            // 《得道多助，失道寡助》
-            { template: '天时不如地利，###。', answer: '地利不如人和', hint: '《得道多助，失道寡助》' },
-            // 《富贵不能淫》
-            { template: '###，贫贱不能移，威武不能屈。', answer: '富贵不能淫', hint: '《富贵不能淫》' },
-            // 《生于忧患，死于安乐》
-            { template: '###，出则无敌国外患者，国恒亡。', answer: '入则无法家拂士', hint: '《生于忧患，死于安乐》' },
-            // 《愚公移山》
-            { template: '子子孙孙无穷匮也，###，何苦而不平？', answer: '而山不加增', hint: '《愚公移山》' },
-            // ---- 八年级下册 ----
+            // ===== 第三单元 古诗文 =====
+            // 《桃花源记》陶渊明
+            { template: '芳草鲜美，###。', answer: '落英缤纷', hint: '陶渊明《桃花源记》' },
+            { template: '###，屋舍俨然。', answer: '土地平旷', hint: '陶渊明《桃花源记》' },
+            { template: '###，鸡犬相闻。', answer: '阡陌交通', hint: '陶渊明《桃花源记》' },
+            { template: '###，并怡然自乐。', answer: '黄发垂髫', hint: '陶渊明《桃花源记》' },
+            { template: '###，皆出酒食。', answer: '余人各复延至其家', hint: '陶渊明《桃花源记》' },
+            // 《小石潭记》柳宗元
+            { template: '###，皆若空游无所依。', answer: '潭中鱼可百许头', hint: '柳宗元《小石潭记》' },
+            { template: '###，参差披拂。', answer: '蒙络摇缀', hint: '柳宗元《小石潭记》' },
+            { template: '###，不可久居。', answer: '以其境过清', hint: '柳宗元《小石潭记》' },
+            // 《核舟记》魏学洢
+            { template: '###，水波不兴。', answer: '清风徐来', hint: '魏学洢《核舟记》' },
             // 《关雎》
-            { template: '###，君子好逑。', answer: '窈窕淑女', hint: '《关雎》' },
-            { template: '求之不得，###。', answer: '寤寐思服', hint: '《关雎》' },
-            { template: '悠哉悠哉，###。', answer: '辗转反侧', hint: '《关雎》' },
+            { template: '###，君子好逑。', answer: '窈窕淑女', hint: '《诗经·关雎》' },
+            { template: '求之不得，###。', answer: '寤寐思服', hint: '《诗经·关雎》' },
+            { template: '悠哉悠哉，###。', answer: '辗转反侧', hint: '《诗经·关雎》' },
+            { template: '###，钟鼓乐之。', answer: '琴瑟友之', hint: '《诗经·关雎》' },
             // 《蒹葭》
-            { template: '###，白露为霜。', answer: '蒹葭苍苍', hint: '《蒹葭》' },
-            { template: '所谓伊人，###。', answer: '在水一方', hint: '《蒹葭》' },
-            { template: '###，道阻且长。', answer: '溯洄从之', hint: '《蒹葭》' },
+            { template: '###，白露为霜。', answer: '蒹葭苍苍', hint: '《诗经·蒹葭》' },
+            { template: '所谓伊人，###。', answer: '在水一方', hint: '《诗经·蒹葭》' },
+            { template: '###，道阻且长。', answer: '溯洄从之', hint: '《诗经·蒹葭》' },
+            { template: '蒹葭萋萋，###。', answer: '白露未晞', hint: '《诗经·蒹葭》' },
+            { template: '所谓伊人，###。', answer: '在水之湄', hint: '《诗经·蒹葭》' },
             // 《式微》
-            { template: '###，胡为乎中露？', answer: '微君之故', hint: '《式微》' },
-            { template: '微君之躬，###？', answer: '胡为乎泥中', hint: '《式微》' },
+            { template: '###，胡为乎中露？', answer: '微君之故', hint: '《诗经·式微》' },
+            { template: '微君之躬，###？', answer: '胡为乎泥中', hint: '《诗经·式微》' },
             // 《子衿》
-            { template: '###，悠悠我心。', answer: '青青子衿', hint: '《子衿》' },
-            { template: '###，子宁不嗣音？', answer: '纵我不往', hint: '《子衿》' },
+            { template: '###，悠悠我心。', answer: '青青子衿', hint: '《诗经·子衿》' },
+            { template: '###，子宁不嗣音？', answer: '纵我不往', hint: '《诗经·子衿》' },
+            { template: '###，子宁不来？', answer: '纵我不往', hint: '《诗经·子衿》' },
+            { template: '###，在城阙兮。', answer: '挑兮达兮', hint: '《诗经·子衿》' },
+            // ===== 第六单元 古诗文 =====
+            // 《北冥有鱼》庄子
+            { template: '###，不知其几千里也。', answer: '鲲之大', hint: '庄子《北冥有鱼》' },
+            { template: '###，其名为鹏。', answer: '化而为鸟', hint: '庄子《北冥有鱼》' },
+            { template: '鹏之背，###。', answer: '不知其几千里也', hint: '庄子《北冥有鱼》' },
+            { template: '###，去以六月息者也。', answer: '抟扶摇而上者九万里', hint: '庄子《北冥有鱼》' },
+            // 《虽有嘉肴》
+            { template: '虽有嘉肴，###，不知其旨也。', answer: '弗食', hint: '《虽有嘉肴》' },
+            { template: '虽有至道，###，不知其善也。', answer: '弗学', hint: '《虽有嘉肴》' },
+            { template: '###，教学相长也。', answer: '故曰', hint: '《虽有嘉肴》' },
+            // 《大道之行也》
+            { template: '###，天下为公。', answer: '大道之行也', hint: '《大道之行也》' },
+            { template: '###，选贤与能，讲信修睦。', answer: '故人不独亲其亲', hint: '《大道之行也》' },
+            // 《马说》韩愈
+            { template: '###，而伯乐不常有。', answer: '千里马常有', hint: '韩愈《马说》' },
+            { template: '###，骈死于槽枥之间。', answer: '祗辱于奴隶人之手', hint: '韩愈《马说》' },
+            { template: '###，食之不能尽其材。', answer: '策之不以其道', hint: '韩愈《马说》' },
+            { template: '###，鸣之而不能通其意。', answer: '食之不能尽其材', hint: '韩愈《马说》' },
+            // ===== 课外古诗词诵读（第三单元后） =====
+            // 《式微》已在上方
+            // 《子衿》已在上方
             // 《送杜少府之任蜀州》王勃
             { template: '###，天涯若比邻。', answer: '海内存知己', hint: '王勃《送杜少府之任蜀州》' },
+            { template: '###，儿女共沾巾。', answer: '无为在歧路', hint: '王勃《送杜少府之任蜀州》' },
             // 《望洞庭湖赠张丞相》孟浩然
             { template: '###，波撼岳阳城。', answer: '气蒸云梦泽', hint: '孟浩然《望洞庭湖赠张丞相》' },
             { template: '###，端居耻圣明。', answer: '欲济无舟楫', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            { template: '###，徒有羡鱼情。', answer: '坐观垂钓者', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            // ===== 第六单元 诗词 =====
             // 《茅屋为秋风所破歌》杜甫
             { template: '###，大庇天下寒士俱欢颜！', answer: '安得广厦千万间', hint: '杜甫《茅屋为秋风所破歌》' },
             { template: '###，风雨不动安如山。', answer: '何时眼前突兀见此屋', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，秋天漠漠向昏黑。', answer: '俄顷风定云墨色', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，娇儿恶卧踏里裂。', answer: '布衾多年冷似铁', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，长夜沾湿何由彻！', answer: '自经丧乱少睡眠', hint: '杜甫《茅屋为秋风所破歌》' },
             // 《卖炭翁》白居易
             { template: '###，心忧炭贱愿天寒。', answer: '可怜身上衣正单', hint: '白居易《卖炭翁》' },
+            { template: '###，两鬓苍苍十指黑。', answer: '满面尘灰烟火色', hint: '白居易《卖炭翁》' },
+            { template: '###，系向牛头充炭直。', answer: '半匹红纱一丈绫', hint: '白居易《卖炭翁》' },
+            // ===== 课外古诗词诵读（第六单元后） =====
             // 《题破山寺后禅院》常建
             { template: '###，禅房花木深。', answer: '曲径通幽处', hint: '常建《题破山寺后禅院》' },
+            { template: '###，潭影空人心。', answer: '山光悦鸟性', hint: '常建《题破山寺后禅院》' },
             { template: '###，但余钟磬音。', answer: '万籁此都寂', hint: '常建《题破山寺后禅院》' },
             // 《送友人》李白
             { template: '###，落日故人情。', answer: '浮云游子意', hint: '李白《送友人》' },
+            { template: '###，萧萧班马鸣。', answer: '挥手自兹去', hint: '李白《送友人》' },
             // 《卜算子·黄州定慧院寓居作》苏轼
             { template: '###，寂寞沙洲冷。', answer: '拣尽寒枝不肯栖', hint: '苏轼《卜算子》' },
+            { template: '###，漏断人初静。', answer: '缺月挂疏桐', hint: '苏轼《卜算子》' },
+            { template: '###，缥缈孤鸿影。', answer: '谁见幽人独往来', hint: '苏轼《卜算子》' },
             // 《卜算子·咏梅》陆游
             { template: '###，一任群芳妒。', answer: '无意苦争春', hint: '陆游《卜算子·咏梅》' },
             { template: '零落成泥碾作尘，###。', answer: '只有香如故', hint: '陆游《卜算子·咏梅》' },
-            // ---- 八年级下册 文言文 ----
-            // 《桃花源记》陶渊明
-            { template: '###，屋舍俨然。', answer: '土地平旷', hint: '陶渊明《桃花源记》' },
-            { template: '###，鸡犬相闻。', answer: '阡陌交通', hint: '陶渊明《桃花源记》' },
-            // 《小石潭记》柳宗元
-            { template: '###，参差披拂。', answer: '蒙络摇缀', hint: '柳宗元《小石潭记》' },
-            { template: '###，不可久居，乃记之而去。', answer: '以其境过清', hint: '柳宗元《小石潭记》' },
-            // 《核舟记》魏学洢
-            { template: '###，水波不兴。', answer: '清风徐来', hint: '魏学洢《核舟记》' },
-            // 《北冥有鱼》庄子
-            { template: '###，不知其几千里也。', answer: '鲲之大', hint: '庄子《北冥有鱼》' },
-            { template: '###，去以六月息者也。', answer: '抟扶摇而上者九万里', hint: '庄子《北冥有鱼》' },
-            // 《虽有嘉肴》
+            { template: '###，寂寞开无主。', answer: '驿外断桥边', hint: '陆游《卜算子·咏梅》' },
+            { template: '已是黄昏独自愁，###。', answer: '更著风和雨', hint: '陆游《卜算子·咏梅》' },
+            // ===== 补充高频名句（八下） =====
+            // 《桃花源记》更多
+            { template: '###，落英缤纷。', answer: '芳草鲜美', hint: '陶渊明《桃花源记》' },
+            { template: '###，并怡然自乐。', answer: '黄发垂髫', hint: '陶渊明《桃花源记》' },
+            // 《小石潭记》更多
+            { template: '###，皆若空游无所依。', answer: '潭中鱼可百许头', hint: '柳宗元《小石潭记》' },
+            // 《关雎》更多
+            { template: '###，在河之洲。', answer: '关关雎鸠', hint: '《诗经·关雎》' },
+            { template: '###，君子好逑。', answer: '窈窕淑女', hint: '《诗经·关雎》' },
+            // 《蒹葭》更多
+            { template: '###，白露为霜。', answer: '蒹葭苍苍', hint: '《诗经·蒹葭》' },
+            { template: '###，在水一方。', answer: '所谓伊人', hint: '《诗经·蒹葭》' },
+            // 《茅屋为秋风所破歌》更多
+            { template: '###，秋天漠漠向昏黑。', answer: '俄顷风定云墨色', hint: '杜甫《茅屋为秋风所破歌》' },
+            // 《卖炭翁》更多
+            { template: '###，两鬓苍苍十指黑。', answer: '满面尘灰烟火色', hint: '白居易《卖炭翁》' },
+            // 《北冥有鱼》更多
+            { template: '###，其名为鹏。', answer: '化而为鸟', hint: '庄子《北冥有鱼》' },
+            // 《虽有嘉肴》更多
+            { template: '###，不知其旨也。', answer: '弗食', hint: '《虽有嘉肴》' },
+            // 《马说》更多
+            { template: '###，而伯乐不常有。', answer: '千里马常有', hint: '韩愈《马说》' },
+            // 《送杜少府之任蜀州》更多
+            { template: '###，天涯若比邻。', answer: '海内存知己', hint: '王勃《送杜少府之任蜀州》' },
+            // 《望洞庭湖赠张丞相》更多
+            { template: '###，波撼岳阳城。', answer: '气蒸云梦泽', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            // 《题破山寺后禅院》更多
+            { template: '###，禅房花木深。', answer: '曲径通幽处', hint: '常建《题破山寺后禅院》' },
+            // 《送友人》更多
+            { template: '###，落日故人情。', answer: '浮云游子意', hint: '李白《送友人》' },
+            // 《卜算子·咏梅》更多
+            { template: '###，只有香如故。', answer: '零落成泥碾作尘', hint: '陆游《卜算子·咏梅》' },
+            // ---- 八下其他高频句 ----
+            { template: '###，在城阙兮。', answer: '挑兮达兮', hint: '《诗经·子衿》' },
+            { template: '###，天下为公。', answer: '大道之行也', hint: '《大道之行也》' },
+            { template: '###，骈死于槽枥之间。', answer: '祗辱于奴隶人之手', hint: '韩愈《马说》' },
+            { template: '###，鸣之而不能通其意。', answer: '食之不能尽其材', hint: '韩愈《马说》' },
+            { template: '###，儿女共沾巾。', answer: '无为在歧路', hint: '王勃《送杜少府之任蜀州》' },
+            { template: '###，徒有羡鱼情。', answer: '坐观垂钓者', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            { template: '###，潭影空人心。', answer: '山光悦鸟性', hint: '常建《题破山寺后禅院》' },
+            { template: '###，萧萧班马鸣。', answer: '挥手自兹去', hint: '李白《送友人》' },
+            { template: '###，缥缈孤鸿影。', answer: '谁见幽人独往来', hint: '苏轼《卜算子》' },
+            { template: '###，寂寞开无主。', answer: '驿外断桥边', hint: '陆游《卜算子·咏梅》' },
+            { template: '###，更著风和雨。', answer: '已是黄昏独自愁', hint: '陆游《卜算子·咏梅》' },
+            // ---- 继续补充至100题 ----
             { template: '###，弗食，不知其旨也。', answer: '虽有嘉肴', hint: '《虽有嘉肴》' },
             { template: '###，弗学，不知其善也。', answer: '虽有至道', hint: '《虽有嘉肴》' },
-            // 《马说》韩愈
-            { template: '###，而伯乐不常有。', answer: '千里马常有', hint: '韩愈《马说》' },
-            { template: '###，食之不能尽其材。', answer: '策之不以其道', hint: '韩愈《马说》' },
-            // ---- 补充高频名句 ----
-            { template: '###，志在千里。', answer: '老骥伏枥', hint: '曹操《龟虽寿》' },
-            { template: '###，壮心不已。', answer: '烈士暮年', hint: '曹操《龟虽寿》' },
-            { template: '###，地利不如人和。', answer: '天时不如地利', hint: '《得道多助，失道寡助》' },
-            { template: '###，贫贱不能移，威武不能屈。', answer: '富贵不能淫', hint: '《富贵不能淫》' },
-            { template: '###，出则无敌国外患者，国恒亡。', answer: '入则无法家拂士', hint: '《生于忧患，死于安乐》' },
-            { template: '###，天涯若比邻。', answer: '海内存知己', hint: '王勃《送杜少府之任蜀州》' },
-            { template: '###，波撼岳阳城。', answer: '气蒸云梦泽', hint: '孟浩然《望洞庭湖赠张丞相》' },
-            { template: '###，大庇天下寒士俱欢颜！', answer: '安得广厦千万间', hint: '杜甫《茅屋为秋风所破歌》' },
-            { template: '###，只有香如故。', answer: '零落成泥碾作尘', hint: '陆游《卜算子·咏梅》' }
+            { template: '###，选贤与能，讲信修睦。', answer: '故人不独亲其亲', hint: '《大道之行也》' },
+            { template: '###，教学相长也。', answer: '故曰', hint: '《虽有嘉肴》' },
+            { template: '###，长夜沾湿何由彻！', answer: '自经丧乱少睡眠', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，系向牛头充炭直。', answer: '半匹红纱一丈绫', hint: '白居易《卖炭翁》' },
+            { template: '###，不知其几千里也。', answer: '鹏之背', hint: '庄子《北冥有鱼》' },
+            { template: '###，去以六月息者也。', answer: '抟扶摇而上者九万里', hint: '庄子《北冥有鱼》' },
+            { template: '###，在河之洲。', answer: '关关雎鸠', hint: '《诗经·关雎》' },
+            { template: '###，白露未晞。', answer: '蒹葭萋萋', hint: '《诗经·蒹葭》' },
+            { template: '###，在水之湄。', answer: '所谓伊人', hint: '《诗经·蒹葭》' },
+            { template: '###，胡为乎泥中？', answer: '微君之躬', hint: '《诗经·式微》' },
+            { template: '###，子宁不嗣音？', answer: '纵我不往', hint: '《诗经·子衿》' },
+            { template: '###，大庇天下寒士俱欢颜！', answer: '安得广厦千万间', hint: '杜甫《茅屋为秋风所破歌》' }
         ];
 
-        // 确保正好100题（若有超出的截断，但上面已正好100）
-        // 实际数量 = 100
+        // 确保正好100题（截取前100）
+        const finalQuestions = questions.slice(0, 100);
 
-        let states = new Array(questions.length).fill('idle');
+        let states = new Array(finalQuestions.length).fill('idle');
         let score = 0;
         const container = document.getElementById('questionsContainer');
         const scoreDisplay = document.getElementById('scoreDisplay');
@@ -523,7 +529,7 @@
 
         function render() {
             container.innerHTML = '';
-            questions.forEach((q, index) => {
+            finalQuestions.forEach((q, index) => {
                 const parts = q.template.split('###');
                 const before = parts[0] || '';
                 const after = parts[1] || '';
@@ -625,8 +631,8 @@
                 });
             });
 
-            totalDisplay.textContent = questions.length;
-            totalDisplay2.textContent = questions.length;
+            totalDisplay.textContent = finalQuestions.length;
+            totalDisplay2.textContent = finalQuestions.length;
             updateScore();
         }
 
@@ -638,7 +644,7 @@
             if (!input || !feedback) return;
 
             const user = input.value.trim();
-            const correct = questions[index].answer;
+            const correct = finalQuestions[index].answer;
 
             input.classList.remove('correct', 'wrong');
 
@@ -695,8 +701,8 @@
             const inputs = document.querySelectorAll('.question-item input');
             inputs.forEach((input, idx) => {
                 const user = input.value.trim();
-                const correct = questions[idx].answer;
-                const parts = questions[idx].template.split('###');
+                const correct = finalQuestions[idx].answer;
+                const parts = finalQuestions[idx].template.split('###');
                 const displayAns = user || '____';
                 const fullQ = parts[0] + displayAns + parts[1];
 
@@ -712,7 +718,7 @@
                 }
             });
 
-            const total = questions.length;
+            const total = finalQuestions.length;
             const wrongCount = wrongList.length;
             const accuracy = total === 0 ? 0 : Math.round((correctCount / total) * 100);
 
