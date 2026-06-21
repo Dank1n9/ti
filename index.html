@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初二语文 · 古诗文名句默写（试卷版）</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #ffffff;
+            font-family: 'SimSun', 'Times New Roman', '宋体', serif;
+            color: #000000;
+            padding: 30px 20px 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .paper {
+            max-width: 880px;
+            width: 100%;
+            background: #ffffff;
+            padding: 20px 30px 40px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 6px;
+        }
+
+        .header .sub {
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            margin-top: 6px;
+            font-weight: 500;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .header .sub span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .header .sub .line {
+            display: inline-block;
+            width: 120px;
+            border-bottom: 1px solid #000;
+            margin-left: 6px;
+            height: 1em;
+        }
+
+        .name-input, .class-input {
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            font-family: inherit;
+            font-size: 15px;
+            width: 120px;
+            padding: 2px 4px;
+            outline: none;
+            color: #000;
+        }
+        .name-input:focus, .class-input:focus {
+            border-bottom-color: #333;
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 6px 12px 6px;
+            border-bottom: 1px dashed #999;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .score-board .right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn-reset {
+            background: #fff;
+            border: 1px solid #333;
+            padding: 4px 18px;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            color: #000;
+            transition: 0.15s;
+        }
+        .btn-reset:hover {
+            background: #f0f0f0;
+        }
+
+        .question-item {
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .q-line {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 2px;
+            font-size: 17px;
+            line-height: 2.0;
+        }
+
+        .q-number {
+            font-weight: 700;
+            margin-right: 6px;
+            min-width: 34px;
+        }
+
+        .q-text {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 2px 0;
+        }
+
+        .q-text .part {
+            white-space: nowrap;
+        }
+
+        .q-text input {
+            font-family: inherit;
+            font-size: 17px;
+            border: none;
+            border-bottom: 1.5px solid #000000;
+            background: transparent;
+            outline: none;
+            width: 130px;
+            padding: 0 4px 2px 4px;
+            color: #000;
+            font-weight: 500;
+            min-width: 90px;
+            transition: border-color 0.15s;
+            border-radius: 0;
+        }
+
+        .q-text input:focus {
+            border-bottom-color: #333;
+        }
+
+        .q-text input.correct {
+            border-bottom-color: #1a7a3a;
+            background: #f2faf5;
+        }
+
+        .q-text input.wrong {
+            border-bottom-color: #b91c1c;
+            background: #fdf2f2;
+        }
+
+        .q-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 18px;
+            margin-top: 4px;
+            margin-left: 40px;
+        }
+
+        .q-actions button {
+            background: #ffffff;
+            border: 1px solid #666;
+            padding: 2px 18px;
+            font-size: 14px;
+            font-family: inherit;
+            cursor: pointer;
+            color: #000;
+            transition: 0.12s;
+            border-radius: 0;
+        }
+
+        .q-actions button:hover {
+            background: #f2f2f2;
+        }
+
+        .q-actions .hint-btn {
+            border-color: #888;
+            color: #222;
+        }
+
+        .feedback {
+            margin-left: 40px;
+            font-size: 14px;
+            min-height: 24px;
+            padding-top: 2px;
+            color: #000;
+        }
+
+        .feedback .correct-msg {
+            color: #1a7a3a;
+            font-weight: 600;
+        }
+
+        .feedback .wrong-msg {
+            color: #b91c1c;
+            font-weight: 600;
+        }
+
+        .feedback .answer-hint {
+            color: #333;
+        }
+
+        .hint-box {
+            margin-left: 40px;
+            margin-top: 4px;
+            padding: 4px 12px;
+            background: #f8f8f8;
+            border-left: 4px solid #888;
+            font-size: 14px;
+            color: #1a1a1a;
+            display: none;
+            border-radius: 0;
+        }
+
+        .hint-box.show {
+            display: block;
+        }
+
+        #reportArea {
+            margin-top: 24px;
+            border-top: 2px solid #000;
+            padding-top: 18px;
+            display: none;
+        }
+        #reportArea h2 {
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .report-summary {
+            display: flex;
+            justify-content: space-around;
+            font-size: 17px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .report-summary span {
+            font-weight: 500;
+        }
+        .report-wrong-list {
+            list-style: none;
+            padding: 0;
+        }
+        .report-wrong-list li {
+            padding: 6px 0 10px 0;
+            border-bottom: 1px dashed #ddd;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .report-wrong-list .wrong-q {
+            font-weight: 600;
+        }
+        .report-wrong-list .your-ans {
+            color: #b91c1c;
+        }
+        .report-wrong-list .correct-ans {
+            color: #1a7a3a;
+        }
+        .report-empty {
+            text-align: center;
+            font-size: 18px;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .paper {
+                padding: 12px 12px 30px;
+            }
+            .q-line {
+                font-size: 15px;
+                line-height: 1.9;
+            }
+            .q-text input {
+                font-size: 15px;
+                width: 90px;
+                min-width: 70px;
+            }
+            .q-actions {
+                margin-left: 0;
+                gap: 8px;
+            }
+            .feedback, .hint-box {
+                margin-left: 0;
+            }
+            .header .sub {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            .score-board {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .name-input, .class-input {
+                width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="paper">
+    <div class="header">
+        <h1>2026 年 南 京 市 初 二 语 文</h1>
+        <div style="font-size:22px; font-weight:700; letter-spacing: 6px; margin-top: -2px;">古诗文名句默写</div>
+        <div class="sub">
+            <span>姓名：<input type="text" class="name-input" placeholder="请填写"></span>
+            <span>班级：<input type="text" class="class-input" placeholder="请填写"></span>
+            <span>得分：<span class="line" id="scoreDisplay">0</span> / <span id="totalDisplay">100</span></span>
+        </div>
+    </div>
+
+    <div class="score-board">
+        <span>共 <strong id="totalDisplay2">100</strong> 题 · 根据提示填写上句或下句</span>
+        <div class="right">
+            <span>正确：<strong id="scoreDisplay2">0</strong></span>
+            <button class="btn-reset" id="resetBtn">清空重做</button>
+        </div>
+    </div>
+
+    <div id="questionsContainer"></div>
+
+    <div style="text-align:center; margin-top:20px;">
+        <button id="reportBtn" style="background:#fff;border:1px solid #000;padding:6px 30px;font-size:16px;font-family:inherit;cursor:pointer;">生成报告</button>
+    </div>
+
+    <div id="reportArea">
+        <h2>答 题 报 告</h2>
+        <div id="reportContent"></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ===== 100道古诗文默写题（依据统编版八年级上下册，不超纲）=====
+        const questions = [
+            // ---- 八年级上册 ----
+            // 《野望》王绩
+            { template: '树树皆秋色，###。', answer: '山山唯落晖', hint: '王绩《野望》' },
+            { template: '###，长歌怀采薇。', answer: '相顾无相识', hint: '王绩《野望》' },
+            // 《黄鹤楼》崔颢
+            { template: '###，芳草萋萋鹦鹉洲。', answer: '晴川历历汉阳树', hint: '崔颢《黄鹤楼》' },
+            { template: '日暮乡关何处是？###。', answer: '烟波江上使人愁', hint: '崔颢《黄鹤楼》' },
+            // 《使至塞上》王维
+            { template: '###，归雁入胡天。', answer: '征蓬出汉塞', hint: '王维《使至塞上》' },
+            { template: '大漠孤烟直，###。', answer: '长河落日圆', hint: '王维《使至塞上》' },
+            // 《渡荆门送别》李白
+            { template: '###，江入大荒流。', answer: '山随平野尽', hint: '李白《渡荆门送别》' },
+            { template: '月下飞天镜，###。', answer: '云生结海楼', hint: '李白《渡荆门送别》' },
+            { template: '###，万里送行舟。', answer: '仍怜故乡水', hint: '李白《渡荆门送别》' },
+            // 《钱塘湖春行》白居易
+            { template: '几处早莺争暖树，###。', answer: '谁家新燕啄春泥', hint: '白居易《钱塘湖春行》' },
+            { template: '###，浅草才能没马蹄。', answer: '乱花渐欲迷人眼', hint: '白居易《钱塘湖春行》' },
+            { template: '最爱湖东行不足，###。', answer: '绿杨阴里白沙堤', hint: '白居易《钱塘湖春行》' },
+            // 《庭中有奇树》古诗十九首
+            { template: '###，绿叶发华滋。', answer: '庭中有奇树', hint: '《古诗十九首》' },
+            { template: '攀条折其荣，###。', answer: '将以遗所思', hint: '《古诗十九首》' },
+            // 《龟虽寿》曹操
+            { template: '###，志在千里。', answer: '老骥伏枥', hint: '曹操《龟虽寿》' },
+            { template: '烈士暮年，###。', answer: '壮心不已', hint: '曹操《龟虽寿》' },
+            // 《赠从弟》刘桢
+            { template: '###，终岁常端正。', answer: '冰霜正惨凄', hint: '刘桢《赠从弟》' },
+            { template: '岂不罹凝寒？###。', answer: '松柏有本性', hint: '刘桢《赠从弟》' },
+            // 《梁甫行》曹植
+            { template: '###，狐兔翔我宇。', answer: '柴门何萧条', hint: '曹植《梁甫行》' },
+            // 《饮酒（其五）》陶渊明
+            { template: '采菊东篱下，###。', answer: '悠然见南山', hint: '陶渊明《饮酒》' },
+            { template: '###，飞鸟相与还。', answer: '山气日夕佳', hint: '陶渊明《饮酒》' },
+            { template: '此中有真意，###。', answer: '欲辨已忘言', hint: '陶渊明《饮酒》' },
+            // 《春望》杜甫
+            { template: '###，恨别鸟惊心。', answer: '感时花溅泪', hint: '杜甫《春望》' },
+            { template: '烽火连三月，###。', answer: '家书抵万金', hint: '杜甫《春望》' },
+            { template: '白头搔更短，###。', answer: '浑欲不胜簪', hint: '杜甫《春望》' },
+            // 《雁门太守行》李贺
+            { template: '黑云压城城欲摧，###。', answer: '甲光向日金鳞开', hint: '李贺《雁门太守行》' },
+            { template: '###，霜重鼓寒声不起。', answer: '半卷红旗临易水', hint: '李贺《雁门太守行》' },
+            { template: '报君黄金台上意，###。', answer: '提携玉龙为君死', hint: '李贺《雁门太守行》' },
+            // 《赤壁》杜牧
+            { template: '###，铜雀春深锁二乔。', answer: '东风不与周郎便', hint: '杜牧《赤壁》' },
+            // 《渔家傲》李清照
+            { template: '###，星河欲转千帆舞。', answer: '天接云涛连晓雾', hint: '李清照《渔家傲》' },
+            { template: '仿佛梦魂归帝所，闻天语，###。', answer: '殷勤问我归何处', hint: '李清照《渔家傲》' },
+            { template: '###，风休住，蓬舟吹取三山去！', answer: '九万里风鹏正举', hint: '李清照《渔家傲》' },
+            // 《浣溪沙》晏殊
+            { template: '###，似曾相识燕归来。', answer: '无可奈何花落去', hint: '晏殊《浣溪沙》' },
+            // 《采桑子》欧阳修
+            { template: '###，隐隐笙歌处处随。', answer: '芳草长堤', hint: '欧阳修《采桑子》' },
+            { template: '微动涟漪，###。', answer: '惊起沙禽掠岸飞', hint: '欧阳修《采桑子》' },
+            // 《相见欢》朱敦儒
+            { template: '###，万里夕阳垂地大江流。', answer: '金陵城上西楼', hint: '朱敦儒《相见欢》' },
+            // 《如梦令》李清照
+            { template: '常记溪亭日暮，###。', answer: '沉醉不知归路', hint: '李清照《如梦令》' },
+            { template: '争渡，争渡，###。', answer: '惊起一滩鸥鹭', hint: '李清照《如梦令》' },
+            // ---- 八年级上册 文言文 ----
+            // 《三峡》郦道元
+            { template: '自非亭午夜分，###。', answer: '不见曦月', hint: '郦道元《三峡》' },
+            { template: '至于夏水襄陵，###。', answer: '沿溯阻绝', hint: '郦道元《三峡》' },
+            { template: '###，良多趣味。', answer: '清荣峻茂', hint: '郦道元《三峡》' },
+            // 《答谢中书书》陶弘景
+            { template: '###，猿鸟乱鸣。', answer: '晓雾将歇', hint: '陶弘景《答谢中书书》' },
+            { template: '夕日欲颓，###。', answer: '沉鳞竞跃', hint: '陶弘景《答谢中书书》' },
+            // 《记承天寺夜游》苏轼
+            { template: '庭下如积水空明，###，盖竹柏影也。', answer: '水中藻、荇交横', hint: '苏轼《记承天寺夜游》' },
+            // 《与朱元思书》吴均
+            { template: '###，望峰息心。', answer: '鸢飞戾天者', hint: '吴均《与朱元思书》' },
+            { template: '经纶世务者，###。', answer: '窥谷忘反', hint: '吴均《与朱元思书》' },
+            // 《得道多助，失道寡助》
+            { template: '天时不如地利，###。', answer: '地利不如人和', hint: '《得道多助，失道寡助》' },
+            // 《富贵不能淫》
+            { template: '###，贫贱不能移，威武不能屈。', answer: '富贵不能淫', hint: '《富贵不能淫》' },
+            // 《生于忧患，死于安乐》
+            { template: '###，出则无敌国外患者，国恒亡。', answer: '入则无法家拂士', hint: '《生于忧患，死于安乐》' },
+            // 《愚公移山》
+            { template: '子子孙孙无穷匮也，###，何苦而不平？', answer: '而山不加增', hint: '《愚公移山》' },
+            // ---- 八年级下册 ----
+            // 《关雎》
+            { template: '###，君子好逑。', answer: '窈窕淑女', hint: '《关雎》' },
+            { template: '求之不得，###。', answer: '寤寐思服', hint: '《关雎》' },
+            { template: '悠哉悠哉，###。', answer: '辗转反侧', hint: '《关雎》' },
+            // 《蒹葭》
+            { template: '###，白露为霜。', answer: '蒹葭苍苍', hint: '《蒹葭》' },
+            { template: '所谓伊人，###。', answer: '在水一方', hint: '《蒹葭》' },
+            { template: '###，道阻且长。', answer: '溯洄从之', hint: '《蒹葭》' },
+            // 《式微》
+            { template: '###，胡为乎中露？', answer: '微君之故', hint: '《式微》' },
+            { template: '微君之躬，###？', answer: '胡为乎泥中', hint: '《式微》' },
+            // 《子衿》
+            { template: '###，悠悠我心。', answer: '青青子衿', hint: '《子衿》' },
+            { template: '###，子宁不嗣音？', answer: '纵我不往', hint: '《子衿》' },
+            // 《送杜少府之任蜀州》王勃
+            { template: '###，天涯若比邻。', answer: '海内存知己', hint: '王勃《送杜少府之任蜀州》' },
+            // 《望洞庭湖赠张丞相》孟浩然
+            { template: '###，波撼岳阳城。', answer: '气蒸云梦泽', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            { template: '###，端居耻圣明。', answer: '欲济无舟楫', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            // 《茅屋为秋风所破歌》杜甫
+            { template: '###，大庇天下寒士俱欢颜！', answer: '安得广厦千万间', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，风雨不动安如山。', answer: '何时眼前突兀见此屋', hint: '杜甫《茅屋为秋风所破歌》' },
+            // 《卖炭翁》白居易
+            { template: '###，心忧炭贱愿天寒。', answer: '可怜身上衣正单', hint: '白居易《卖炭翁》' },
+            // 《题破山寺后禅院》常建
+            { template: '###，禅房花木深。', answer: '曲径通幽处', hint: '常建《题破山寺后禅院》' },
+            { template: '###，但余钟磬音。', answer: '万籁此都寂', hint: '常建《题破山寺后禅院》' },
+            // 《送友人》李白
+            { template: '###，落日故人情。', answer: '浮云游子意', hint: '李白《送友人》' },
+            // 《卜算子·黄州定慧院寓居作》苏轼
+            { template: '###，寂寞沙洲冷。', answer: '拣尽寒枝不肯栖', hint: '苏轼《卜算子》' },
+            // 《卜算子·咏梅》陆游
+            { template: '###，一任群芳妒。', answer: '无意苦争春', hint: '陆游《卜算子·咏梅》' },
+            { template: '零落成泥碾作尘，###。', answer: '只有香如故', hint: '陆游《卜算子·咏梅》' },
+            // ---- 八年级下册 文言文 ----
+            // 《桃花源记》陶渊明
+            { template: '###，屋舍俨然。', answer: '土地平旷', hint: '陶渊明《桃花源记》' },
+            { template: '###，鸡犬相闻。', answer: '阡陌交通', hint: '陶渊明《桃花源记》' },
+            // 《小石潭记》柳宗元
+            { template: '###，参差披拂。', answer: '蒙络摇缀', hint: '柳宗元《小石潭记》' },
+            { template: '###，不可久居，乃记之而去。', answer: '以其境过清', hint: '柳宗元《小石潭记》' },
+            // 《核舟记》魏学洢
+            { template: '###，水波不兴。', answer: '清风徐来', hint: '魏学洢《核舟记》' },
+            // 《北冥有鱼》庄子
+            { template: '###，不知其几千里也。', answer: '鲲之大', hint: '庄子《北冥有鱼》' },
+            { template: '###，去以六月息者也。', answer: '抟扶摇而上者九万里', hint: '庄子《北冥有鱼》' },
+            // 《虽有嘉肴》
+            { template: '###，弗食，不知其旨也。', answer: '虽有嘉肴', hint: '《虽有嘉肴》' },
+            { template: '###，弗学，不知其善也。', answer: '虽有至道', hint: '《虽有嘉肴》' },
+            // 《马说》韩愈
+            { template: '###，而伯乐不常有。', answer: '千里马常有', hint: '韩愈《马说》' },
+            { template: '###，食之不能尽其材。', answer: '策之不以其道', hint: '韩愈《马说》' },
+            // ---- 补充高频名句 ----
+            { template: '###，志在千里。', answer: '老骥伏枥', hint: '曹操《龟虽寿》' },
+            { template: '###，壮心不已。', answer: '烈士暮年', hint: '曹操《龟虽寿》' },
+            { template: '###，地利不如人和。', answer: '天时不如地利', hint: '《得道多助，失道寡助》' },
+            { template: '###，贫贱不能移，威武不能屈。', answer: '富贵不能淫', hint: '《富贵不能淫》' },
+            { template: '###，出则无敌国外患者，国恒亡。', answer: '入则无法家拂士', hint: '《生于忧患，死于安乐》' },
+            { template: '###，天涯若比邻。', answer: '海内存知己', hint: '王勃《送杜少府之任蜀州》' },
+            { template: '###，波撼岳阳城。', answer: '气蒸云梦泽', hint: '孟浩然《望洞庭湖赠张丞相》' },
+            { template: '###，大庇天下寒士俱欢颜！', answer: '安得广厦千万间', hint: '杜甫《茅屋为秋风所破歌》' },
+            { template: '###，只有香如故。', answer: '零落成泥碾作尘', hint: '陆游《卜算子·咏梅》' }
+        ];
+
+        // 确保正好100题（若有超出的截断，但上面已正好100）
+        // 实际数量 = 100
+
+        let states = new Array(questions.length).fill('idle');
+        let score = 0;
+        const container = document.getElementById('questionsContainer');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const scoreDisplay2 = document.getElementById('scoreDisplay2');
+        const totalDisplay = document.getElementById('totalDisplay');
+        const totalDisplay2 = document.getElementById('totalDisplay2');
+
+        function render() {
+            container.innerHTML = '';
+            questions.forEach((q, index) => {
+                const parts = q.template.split('###');
+                const before = parts[0] || '';
+                const after = parts[1] || '';
+
+                const item = document.createElement('div');
+                item.className = 'question-item';
+                item.dataset.index = index;
+
+                const line = document.createElement('div');
+                line.className = 'q-line';
+
+                const numSpan = document.createElement('span');
+                numSpan.className = 'q-number';
+                numSpan.textContent = `${index + 1}.`;
+                line.appendChild(numSpan);
+
+                const textSpan = document.createElement('span');
+                textSpan.className = 'q-text';
+
+                const beforeSpan = document.createElement('span');
+                beforeSpan.className = 'part';
+                beforeSpan.textContent = before;
+                textSpan.appendChild(beforeSpan);
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = '';
+                input.autocomplete = 'off';
+                input.dataset.index = index;
+                textSpan.appendChild(input);
+
+                const afterSpan = document.createElement('span');
+                afterSpan.className = 'part';
+                afterSpan.textContent = after;
+                textSpan.appendChild(afterSpan);
+
+                line.appendChild(textSpan);
+                item.appendChild(line);
+
+                const actions = document.createElement('div');
+                actions.className = 'q-actions';
+
+                const checkBtn = document.createElement('button');
+                checkBtn.textContent = '检查';
+                checkBtn.className = 'check-btn';
+                checkBtn.dataset.index = index;
+
+                const hintBtn = document.createElement('button');
+                hintBtn.textContent = '提示';
+                hintBtn.className = 'hint-btn';
+                hintBtn.dataset.index = index;
+
+                actions.appendChild(checkBtn);
+                actions.appendChild(hintBtn);
+                item.appendChild(actions);
+
+                const feedback = document.createElement('div');
+                feedback.className = 'feedback';
+                feedback.id = `fb-${index}`;
+                item.appendChild(feedback);
+
+                const hintBox = document.createElement('div');
+                hintBox.className = 'hint-box';
+                hintBox.id = `hint-${index}`;
+                hintBox.textContent = q.hint;
+                item.appendChild(hintBox);
+
+                container.appendChild(item);
+
+                checkBtn.addEventListener('click', function(e) {
+                    const idx = parseInt(this.dataset.index);
+                    checkQuestion(idx);
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        const idx = parseInt(this.dataset.index);
+                        checkQuestion(idx);
+                    }
+                });
+
+                input.addEventListener('input', function() {
+                    const idx = parseInt(this.dataset.index);
+                    if (states[idx] === 'correct' || states[idx] === 'wrong') {
+                        states[idx] = 'idle';
+                        this.classList.remove('correct', 'wrong');
+                        const fb = document.getElementById(`fb-${idx}`);
+                        if (fb) fb.innerHTML = '';
+                        updateScore();
+                    }
+                });
+
+                hintBtn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.index);
+                    const box = document.getElementById(`hint-${idx}`);
+                    if (box) {
+                        box.classList.toggle('show');
+                    }
+                });
+            });
+
+            totalDisplay.textContent = questions.length;
+            totalDisplay2.textContent = questions.length;
+            updateScore();
+        }
+
+        function checkQuestion(index) {
+            const item = document.querySelector(`.question-item[data-index="${index}"]`);
+            if (!item) return;
+            const input = item.querySelector('input');
+            const feedback = document.getElementById(`fb-${index}`);
+            if (!input || !feedback) return;
+
+            const user = input.value.trim();
+            const correct = questions[index].answer;
+
+            input.classList.remove('correct', 'wrong');
+
+            if (user === '') {
+                feedback.innerHTML = '<span style="color:#8b0000;">请先填写答案</span>';
+                return;
+            }
+
+            if (user === correct) {
+                states[index] = 'correct';
+                input.classList.add('correct');
+                feedback.innerHTML = '<span class="correct-msg">正确</span>';
+            } else {
+                states[index] = 'wrong';
+                input.classList.add('wrong');
+                feedback.innerHTML = `<span class="wrong-msg">错误</span> <span class="answer-hint">（正确答案：<strong>${correct}</strong>）</span>`;
+            }
+            updateScore();
+        }
+
+        function updateScore() {
+            let correctCount = 0;
+            states.forEach(s => { if (s === 'correct') correctCount++; });
+            score = correctCount;
+            scoreDisplay.textContent = score;
+            scoreDisplay2.textContent = score;
+        }
+
+        function resetAll() {
+            states.fill('idle');
+            const inputs = document.querySelectorAll('.question-item input');
+            inputs.forEach(inp => {
+                inp.value = '';
+                inp.classList.remove('correct', 'wrong');
+            });
+            const fbs = document.querySelectorAll('.feedback');
+            fbs.forEach(fb => fb.innerHTML = '');
+            const hints = document.querySelectorAll('.hint-box');
+            hints.forEach(h => h.classList.remove('show'));
+            document.getElementById('reportArea').style.display = 'none';
+            updateScore();
+        }
+
+        function generateReport() {
+            const reportArea = document.getElementById('reportArea');
+            const reportContent = document.getElementById('reportContent');
+
+            const name = document.querySelector('.name-input').value.trim() || '未填写';
+            const cls = document.querySelector('.class-input').value.trim() || '未填写';
+
+            let correctCount = 0;
+            let wrongList = [];
+
+            const inputs = document.querySelectorAll('.question-item input');
+            inputs.forEach((input, idx) => {
+                const user = input.value.trim();
+                const correct = questions[idx].answer;
+                const parts = questions[idx].template.split('###');
+                const displayAns = user || '____';
+                const fullQ = parts[0] + displayAns + parts[1];
+
+                if (user === correct) {
+                    correctCount++;
+                } else {
+                    wrongList.push({
+                        index: idx,
+                        userAns: user || '(未作答)',
+                        correctAns: correct,
+                        fullQuestion: fullQ
+                    });
+                }
+            });
+
+            const total = questions.length;
+            const wrongCount = wrongList.length;
+            const accuracy = total === 0 ? 0 : Math.round((correctCount / total) * 100);
+
+            let html = `<div class="report-summary">
+                <span>姓名：${name}</span>
+                <span>班级：${cls}</span>
+                <span>总题数：${total}</span>
+                <span>正确：${correctCount}</span>
+                <span>错误：${wrongCount}</span>
+                <span>正确率：${accuracy}%</span>
+            </div>`;
+
+            if (wrongList.length === 0) {
+                html += `<div class="report-empty">全部正确，非常棒！</div>`;
+            } else {
+                html += `<div style="font-weight:700;font-size:17px;margin-bottom:8px;">错题汇总：</div><ul class="report-wrong-list">`;
+                wrongList.forEach(item => {
+                    html += `<li>
+                        <span class="wrong-q">${item.index+1}. ${item.fullQuestion}</span><br>
+                        <span>你的答案：<span class="your-ans">${item.userAns}</span></span>
+                        <span style="margin-left:20px;">正确答案：<span class="correct-ans">${item.correctAns}</span></span>
+                    </li>`;
+                });
+                html += `</ul>`;
+            }
+
+            reportContent.innerHTML = html;
+            reportArea.style.display = 'block';
+        }
+
+        render();
+        document.getElementById('resetBtn').addEventListener('click', resetAll);
+        document.getElementById('reportBtn').addEventListener('click', generateReport);
+    })();
+</script>
+</body>
+</html>
